@@ -15,6 +15,7 @@ class TorrentFile {
 
   /// file offset
   final int offset;
+  int get end => offset + length;
   TorrentFile(this.name, this.path, this.length, this.offset);
 
   String toJson() {
