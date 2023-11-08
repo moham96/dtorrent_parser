@@ -22,3 +22,6 @@
 
 ## 1.0.6
 - more pub.dev fixes
+
+## 1.0.7
+- use platform path separator
