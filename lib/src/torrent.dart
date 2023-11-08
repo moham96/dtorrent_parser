@@ -9,8 +9,6 @@ import 'package:crypto/crypto.dart';
 
 import 'torrent_file.dart';
 
-const PATH_SEPRATOR = '\\\\';
-
 ///
 /// Torrent File Structure Model.
 ///
@@ -333,12 +331,12 @@ Torrent? parseTorrentFileContent(Map<String, dynamic> torrent) {
       }
       if (e is String) return e;
     }).toList();
-    var p = parts.fold<String>(
-        '',
-        (previousValue, element) => element != null
-            ? previousValue + PATH_SEPRATOR + element
-            : previousValue);
-    p = p.substring(2);
+    String p = '';
+    for (var i = 0; i < parts.length; i++) {
+      var prefix = i > 0 ? Platform.pathSeparator : '';
+      var part = parts[i] != null ? prefix + parts[i]! : '';
+      p = "$p$part";
+    }
     tempfiles.add({
       'path': p,
       'name': parts[parts.length - 1],
