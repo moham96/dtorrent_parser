@@ -27,7 +27,7 @@ void main() {
     var model =
         await Torrent.parse(path.join(torrentsPath, 'big-buck-bunny.torrent'));
     var newFile = await model.saveAs(
-        path.join('..', 'tmp', 'big-buck-bunny.torrent'), true);
+        path.join(testDirectory, '..', 'tmp', 'big-buck-bunny.torrent'), true);
     var newModel = await Torrent.parse(newFile.path);
 
     assert(model.name == newModel.name);
