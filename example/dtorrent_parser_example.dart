@@ -1,8 +1,16 @@
-import 'package:dtorrent_parser/dtorrent_parser.dart';
+import 'dart:io';
 
+import 'package:dtorrent_parser/dtorrent_parser.dart';
+import 'package:path/path.dart' as path;
+
+var scriptDir = path.dirname(Platform.script.path);
+var torrentsPath =
+    path.canonicalize(path.join(scriptDir, '..', '..', '..', 'torrents'));
 void main() async {
-  readAndSave('example/test.torrent', 'example/test2.torrent');
-  readAndSave('example/test3.torrent', 'example/test4.torrent');
+  readAndSave(path.join(torrentsPath, 'big-buck-bunny.torrent'),
+      path.join(scriptDir, '..', 'tmp', 'big-buck-bunny.torrent'));
+  readAndSave(path.join(torrentsPath, 'sintel.torrent'),
+      path.join(scriptDir, '..', 'tmp', 'sintel.torrent'));
 }
 
 void readAndSave(String path, String newPath) async {

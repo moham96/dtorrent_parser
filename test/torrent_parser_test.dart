@@ -1,22 +1,33 @@
+import 'dart:io';
+
 import 'package:test/test.dart';
 import 'package:dtorrent_parser/dtorrent_parser.dart';
+import 'package:path/path.dart' as path;
 
-const PATH = './test/';
+final testDirectory = path.join(
+  Directory.current.path,
+  Directory.current.path.endsWith('test') ? '' : 'test',
+);
 
+var torrentsPath =
+    path.canonicalize(path.join(testDirectory, '..', '..', '..', 'torrents'));
 void main() {
-  /// Magnet URI id：588E1129AE56386B02C67DA8FA3F0E04025D031D
+  /// Magnet URI id：DD8255ECDC7CA55FB0BBF81323D87062DB1F6D1C
   test('Test parse torrent file from a file', () async {
     // If the file is changed, please remember to modify the verification information below accordingly.
-    var result = await Torrent.parse('${PATH}sample.torrent');
-    assert(result.infoHash == '588e1129ae56386b02c67da8fa3f0e04025d031d');
-    assert(result.announces.length == 132);
-    assert(result.files.length == 1);
-    assert(result.length == 2352463340);
+    var result =
+        await Torrent.parse(path.join(torrentsPath, 'big-buck-bunny.torrent'));
+    assert(result.infoHash == 'dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c');
+    assert(result.announces.length == 8);
+    assert(result.files.length == 3);
+    assert(result.length == 276445467);
   });
 
   test('Test save torrent file and validate the model is the same', () async {
-    var model = await Torrent.parse('${PATH}sample.torrent');
-    var newFile = await model.saveAs('${PATH}sample2.torrent', true);
+    var model =
+        await Torrent.parse(path.join(torrentsPath, 'big-buck-bunny.torrent'));
+    var newFile = await model.saveAs(
+        path.join('..', 'tmp', 'big-buck-bunny.torrent'), true);
     var newModel = await Torrent.parse(newFile.path);
 
     assert(model.name == newModel.name);

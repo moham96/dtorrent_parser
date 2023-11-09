@@ -14,3 +14,4 @@ dependencies:
 dev_dependencies:
   test: ^1.24.3
   lints: ^2.0.1
+  path: any
