@@ -25,3 +25,6 @@
 
 ## 1.0.7
 - use platform path separator
+
+## 1.0.8
+- Fix tests and use the new legal test torrents
