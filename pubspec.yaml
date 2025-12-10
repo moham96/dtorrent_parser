@@ -1,6 +1,6 @@
 name: dtorrent_parser
 description: A Dart library for parsing .torrent file to Torrent model/saving Torrent model to .torrent file.
-version: 1.0.8
+version: 1.0.9
 repository: https://github.com/moham96/dtorrent_parser
 issue_tracker: https://github.com/moham96/dtorrent_parser/issues
 
@@ -18,4 +18,4 @@ dev_dependencies:
   coverage: ^1.15.0
 
 executables:
-  dtorrent_parse: bin/dtorrent_parse.dart
+  dtorrent_parse:

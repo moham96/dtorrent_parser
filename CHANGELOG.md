@@ -28,3 +28,11 @@
 
 ## 1.0.8
 - Fix tests and use the new legal test torrents
+
+## 1.0.9
+- Add torrent parsing, validation, serialization, and isolate support
+- Add console program (dtorrent_parse) to parse and output metainfo as JSON
+- Enhance tests with new functionality and edge case handling
+- Add Codecov configuration and CI workflow
+- Add Dependabot configuration for automated dependency updates
+- Various linting and code cleanup improvements
