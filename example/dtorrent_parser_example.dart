@@ -14,10 +14,10 @@ void main() async {
 }
 
 void readAndSave(String path, String newPath) async {
-  var result = await Torrent.parse(path);
+  var result = await Torrent.parseFromFile(path);
   printModelInfo(result);
   var newFile = await result.saveAs(newPath, true);
-  var result2 = await Torrent.parse(newFile.path);
+  var result2 = await Torrent.parseFromFile(newFile.path);
   printModelInfo(result2);
 }
 

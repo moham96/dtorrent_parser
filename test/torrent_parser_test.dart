@@ -1267,13 +1267,6 @@ void main() {
   });
 
   group('Isolate error handling', () {
-    test('handles isolate spawn failure', () async {
-      // This test verifies error handling in IsolateRunner
-      // by using invalid data that causes isolate errors
-      final invalidData = Object(); // Invalid data type
-      expect(() => Torrent.parse(invalidData), throwsA(anything));
-    });
-
     test('handles invalid torrent model in toByteBuffer', () async {
       final dummyInfo = {
         'name': 'dummy',

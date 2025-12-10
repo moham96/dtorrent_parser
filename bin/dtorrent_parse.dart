@@ -17,7 +17,7 @@ void main(List<String> arguments) async {
   }
 
   try {
-    final torrent = await Torrent.parse(filePath);
+    final torrent = await Torrent.parseFromFile(filePath);
     final info = <String, dynamic>{
       'name': torrent.name,
       'announce': torrent.announces.map((u) => u.toString()).toList(),
